@@ -7,8 +7,33 @@
         <title>VISP TECH - Trusted IT Service Expert</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <!-- SEO Meta Tags -->
+        <meta name="description" content="VISP TECH offers personalized IT solutions for all your digital needs and support." />
+        <meta name="keywords" content="VISP TECH, IT Services, Information Technology, Security, Privacy, Consultation" />
+        <!-- CSS -->
         <link rel="stylesheet" href="assets/css/main.css" />
+        <!-- Favicon -->
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <!-- Custom CSS for Fixed Header -->
+        <style>
+            /* Make the header fixed */
+            #header {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+            }
+            /* Adjust the top padding to prevent content overlap */
+            #page-wrapper > *:not(#header) {
+                padding-top: 4em;
+            }
+            /* Ensure the button fits the text */
+            .button.fit {
+                white-space: normal;
+                text-align: center;
+            }
+        </style>
     </head>
     <body class="landing is-preload">
 
@@ -16,7 +41,7 @@
             <div id="page-wrapper">
 
                 <!-- Header -->
-                    <header id="header" class="alt">
+                    <header id="header">
                         <h1><a href="#banner">VISP TECH</a></h1>
                         <nav id="nav">
                             <ul>
@@ -39,10 +64,11 @@
                 <!-- Banner -->
                     <section id="banner">
                         <div class="inner">
+                            <h1>VISP TECH</h1>
                             <h2>Trusted IT Service Expert</h2>
                             <p>Personalized IT solutions for all your digital needs and support.</p>
                             <ul class="actions special">
-                                <li><a href="#contact" class="button primary scrolly">Get Your Free 30-Minute Consultation!</a></li>
+                                <li><a href="#contact" class="button primary fit scrolly">Get Your Free 30-Minute Consultation!</a></li>
                             </ul>
                         </div>
                         <a href="#services" class="more scrolly">Learn More</a>
@@ -118,7 +144,7 @@
                             <div class="content">
                                 <h2>Looking for Business Solutions?</h2>
                                 <p>If you're a business owner or need comprehensive tech solutions for your business, please visit:</p>
-                                <p><a href="https://insitsolutions.com" target="_blank">InsIT Solutions</a></p>
+                                <p><a href="https://insit.solutions/" target="_blank">InsIT Solutions</a></p>
                                 <p>They specialize in delivering robust IT services tailored to meet the unique needs of businesses, ensuring you have the right tools and support to thrive in today's digital landscape.</p>
                             </div>
                         </section>
@@ -131,7 +157,7 @@
                                 <h2>Contact Us</h2>
                                 <p>We’re here to assist you with your IT needs.</p>
                             </header>
-                            <form method="post" action="#">
+                            <form method="post" action="mailto:visptech01@gmail.com">
                                 <div class="fields">
                                     <div class="field half">
                                         <label for="name">Your Name</label>
@@ -160,7 +186,7 @@
                                 <h2>Feedback</h2>
                                 <p>We value your suggestions</p>
                             </header>
-                            <form method="post" action="#">
+                            <form method="post" action="mailto:visptech01@gmail.com">
                                 <div class="fields">
                                     <div class="field half">
                                         <label for="feedback-email">Your Email Address*</label>
