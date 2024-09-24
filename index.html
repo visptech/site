@@ -1,277 +1,220 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
     VISP TECH - Trusted IT Service Expert
 -->
-<html>
-    <head>
-        <title>VISP TECH - Trusted IT Service Expert</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <!-- SEO Meta Tags -->
-        <meta name="description" content="VISP TECH offers personalized IT solutions for all your digital needs and support." />
-        <meta name="keywords" content="VISP TECH, IT Services, Information Technology, Security, Privacy, Consultation" />
-        <!-- CSS -->
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <!-- Favicon -->
-        <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-        <!-- Custom CSS for Fixed Header and Color Scheme -->
-        <style>
-            /* Make the header fixed */
-            #header {
-                position: fixed;
-                top: 0;
-                width: 100%;
-                z-index: 1000;
-                background: #000; /* Black background */
-            }
-            /* Adjust the top padding to prevent content overlap */
-            #page-wrapper > *:not(#header) {
-                padding-top: 4em;
-            }
-            /* Horizontal Navigation Menu */
-            #nav ul {
-                display: flex;
-                justify-content: center;
-                list-style: none;
-                margin: 0;
-                padding: 0;
-            }
-            #nav ul li {
-                margin: 0 1em;
-            }
-            #nav ul li a {
-                color: #fff; /* White text */
-                text-decoration: none;
-                font-weight: bold;
-            }
-            #nav ul li a:hover {
-                color: #b30000; /* Dark red hover effect */
-            }
-            /* Adjust the button styles */
-            .button.primary {
-                background-color: #b30000; /* Dark red button */
-                border-color: #b30000;
-            }
-            .button.primary:hover {
-                background-color: #e60000; /* Slightly brighter red on hover */
-                border-color: #e60000;
-            }
-            /* Adjust section backgrounds */
-            .wrapper.style1 {
-                background-color: #1a1a1a; /* Dark background */
-                color: #fff; /* White text */
-            }
-            .wrapper.style3 {
-                background-color: #333333; /* Slightly lighter dark background */
-                color: #fff;
-            }
-            /* Adjust link colors */
-            a {
-                color: #e60000;
-            }
-            a:hover {
-                color: #ff1a1a;
-            }
-            /* Footer styling */
-            #footer {
-                background-color: #000;
-                color: #fff;
-            }
-            #footer a {
-                color: #fff;
-            }
-            #footer a:hover {
-                color: #b30000;
-            }
-        </style>
-    </head>
-    <body class="landing is-preload">
+<html lang="en">
+<head>
+    <title>VISP TECH - Trusted IT Service Expert</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="VISP TECH offers personalized IT solutions for all your digital needs and support." />
+    <meta name="keywords" content="VISP TECH, IT Services, Information Technology, Security, Privacy, Consultation" />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="VISP TECH - Trusted IT Service Expert" />
+    <meta property="og:description" content="VISP TECH offers personalized IT solutions for all your digital needs and support." />
+    <meta property="og:image" content="https://www.visptech.com/images/og-image.jpg" />
+    <meta property="og:url" content="https://www.visptech.com/" />
+    <meta property="og:type" content="website" />
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.min.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <!-- Custom CSS for Fixed Header and Color Scheme -->
+    <style>
+        /* Custom styles here */
+    </style>
+</head>
+<body class="landing is-preload">
 
-        <!-- Page Wrapper -->
-            <div id="page-wrapper">
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
 
-                <!-- Header -->
-                    <header id="header">
-                        <h1><a href="#banner">VISP TECH</a></h1>
-                        <nav id="nav">
-                            <ul>
-                                <li><a href="#banner">Home</a></li>
-                                <li><a href="#services">Services</a></li>
-                                <li><a href="#process">Our Process</a></li>
-                                <li><a href="#contact">Contact</a></li>
-                                <li><a href="#feedback">Feedback</a></li>
-                            </ul>
-                        </nav>
-                    </header>
+        <!-- Header -->
+        <header id="header">
+            <h1><a href="#banner">VISP TECH</a></h1>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#banner">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#process">Our Process</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#feedback">Feedback</a></li>
+                </ul>
+            </nav>
+        </header>
 
-                <!-- Banner -->
-                    <section id="banner">
-                        <div class="inner">
-                            <h1>VISP TECH</h1>
-                            <h2>Trusted IT Service Expert</h2>
-                            <p>Personalized IT solutions for all your digital needs and support.</p>
-                            <ul class="actions special">
-                                <li><a href="#contact" class="button primary fit scrolly">Get Your Free 30-Minute Consultation!</a></li>
-                            </ul>
-                        </div>
-                        <a href="#services" class="more scrolly">Learn More</a>
-                    </section>
-
-                <!-- Services -->
-                    <section id="services" class="wrapper style1 special">
-                        <div class="inner">
-                            <header class="major">
-                                <h2>Services</h2>
-                                <p>Tailored IT Solutions to Meet Your Unique Needs</p>
-                            </header>
-                            <div class="features">
-                                <section>
-                                    <span class="icon solid major fa-desktop style1"></span>
-                                    <h3>Information Technology</h3>
-                                    <p>Reliable IT support, from hardware repairs to software troubleshooting, ensuring your systems run smoothly.</p>
-                                </section>
-                                <section>
-                                    <span class="icon solid major fa-shield-alt style2"></span>
-                                    <h3>Security</h3>
-                                    <p>Protect your digital assets with robust security measures that safeguard against threats and breaches.</p>
-                                </section>
-                                <section>
-                                    <span class="icon solid major fa-user-secret style3"></span>
-                                    <h3>Privacy</h3>
-                                    <p>Ensure your personal and professional data remains private with our comprehensive privacy solutions.</p>
-                                </section>
-                            </div>
-                        </div>
-                    </section>
-
-                <!-- Process -->
-                    <section id="process" class="wrapper style3 special">
-                        <div class="inner">
-                            <header class="major">
-                                <h2>Our Process</h2>
-                                <p>How We Work to Deliver the Best IT Solutions</p>
-                            </header>
-                            <ul class="features">
-                                <li class="icon solid fa-comments">
-                                    <h3>Phase I - Initial Consultation</h3>
-                                    <p>A free 30-minute consultation to discuss your problem and potential solutions.</p>
-                                </li>
-                                <li class="icon solid fa-file-alt">
-                                    <h3>Phase II - Blueprint Creation</h3>
-                                    <p>We analyze your needs and create a custom solution focused on efficiency and security.</p>
-                                </li>
-                                <li class="icon solid fa-envelope-open-text">
-                                    <h3>Phase III - Reporting</h3>
-                                    <p>Receive a detailed report of our findings and proposed solutions via email.</p>
-                                </li>
-                                <li class="icon solid fa-handshake">
-                                    <h3>Phase IV - Scope and Agreement</h3>
-                                    <p>We define the project scope, discuss pricing, and finalize the agreement.</p>
-                                </li>
-                                <li class="icon solid fa-cogs">
-                                    <h3>Phase V - Implementation</h3>
-                                    <p>Execution of the solution, ensuring all tasks are completed to your satisfaction.</p>
-                                </li>
-                                <li class="icon solid fa-check-circle">
-                                    <h3>Phase VI - Finalization</h3>
-                                    <p>We finalize the project, collect feedback, and provide the final report.</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </section>
-
-                <!-- Business Solutions CTA -->
-                    <section id="business" class="wrapper alt style2">
-                        <section class="spotlight">
-                            <div class="image"><img src="images/business.jpg" alt="Business Solutions" /></div>
-                            <div class="content">
-                                <h2>Looking for Business Solutions?</h2>
-                                <p>If you're a business owner or need comprehensive tech solutions for your business, please visit:</p>
-                                <p><a href="https://insit.solutions/" target="_blank">InsIT Solutions</a></p>
-                                <p>They specialize in delivering robust IT services tailored to meet the unique needs of businesses, ensuring you have the right tools and support to thrive in today's digital landscape.</p>
-                            </div>
-                        </section>
-                    </section>
-
-                <!-- Contact -->
-                    <section id="contact" class="wrapper style1 special">
-                        <div class="inner">
-                            <header class="major">
-                                <h2>Contact Us</h2>
-                                <p>We’re here to assist you with your IT needs.</p>
-                            </header>
-                            <form method="post" action="mailto:visptech01@gmail.com">
-                                <div class="fields">
-                                    <div class="field half">
-                                        <label for="name">Your Name</label>
-                                        <input type="text" name="name" id="name" placeholder="Enter your full name" />
-                                    </div>
-                                    <div class="field half">
-                                        <label for="email">Your Email Address*</label>
-                                        <input type="email" name="email" id="email" placeholder="Enter your email address" required />
-                                    </div>
-                                    <div class="field">
-                                        <label for="message">How can we help?*</label>
-                                        <textarea name="message" id="message" rows="6" placeholder="Type your message here" required></textarea>
-                                    </div>
-                                </div>
-                                <ul class="actions special">
-                                    <li><input type="submit" value="Send Message" class="button primary" /></li>
-                                </ul>
-                            </form>
-                        </div>
-                    </section>
-
-                <!-- Feedback -->
-                    <section id="feedback" class="wrapper style5">
-                        <div class="inner">
-                            <header class="major">
-                                <h2>Feedback</h2>
-                                <p>We value your suggestions</p>
-                            </header>
-                            <form method="post" action="mailto:visptech01@gmail.com">
-                                <div class="fields">
-                                    <div class="field half">
-                                        <label for="feedback-email">Your Email Address*</label>
-                                        <input type="email" name="feedback-email" id="feedback-email" placeholder="Enter your email address" required />
-                                    </div>
-                                    <div class="field">
-                                        <label for="suggestion">Your Suggestion*</label>
-                                        <textarea name="suggestion" id="suggestion" rows="6" placeholder="Share your valuable feedback" required></textarea>
-                                    </div>
-                                </div>
-                                <ul class="actions special">
-                                    <li><input type="submit" value="Submit Your Suggestion" class="button primary" /></li>
-                                </ul>
-                            </form>
-                        </div>
-                    </section>
-
-                <!-- Footer -->
-                    <footer id="footer">
-                        <ul class="icons">
-                            <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-                            <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-                            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-                            <li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-                            <li><a href="mailto:info@visptech.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-                        </ul>
-                        <ul class="copyright">
-                            <li>&copy; 2024 VISP TECH LLC. All rights reserved.</li>
-                        </ul>
-                    </footer>
-
+        <!-- Banner -->
+        <section id="banner" role="banner">
+            <div class="inner">
+                <h1>VISP TECH</h1>
+                <h2>Trusted IT Service Expert</h2>
+                <p>Personalized IT solutions for all your digital needs and support.</p>
+                <ul class="actions special">
+                    <li><a href="#contact" class="button primary fit scrolly">Get Your Free 30-Minute Consultation!</a></li>
+                </ul>
             </div>
+            <a href="#services" class="more scrolly" aria-label="Learn more about our services">Learn More</a>
+        </section>
 
-        <!-- Scripts -->
-            <script src="assets/js/jquery.min.js"></script>
-            <script src="assets/js/jquery.scrollex.min.js"></script>
-            <script src="assets/js/jquery.scrolly.min.js"></script>
-            <script src="assets/js/browser.min.js"></script>
-            <script src="assets/js/breakpoints.min.js"></script>
-            <script src="assets/js/util.js"></script>
-            <script src="assets/js/main.js"></script>
+        <!-- Services -->
+        <section id="services" class="wrapper style1 special" role="region" aria-labelledby="services-heading">
+            <div class="inner">
+                <header class="major">
+                    <h2 id="services-heading">Services</h2>
+                    <p>Tailored IT Solutions to Meet Your Unique Needs</p>
+                </header>
+                <div class="features">
+                    <section>
+                        <span class="icon solid major fa-desktop style1" aria-hidden="true"></span>
+                        <h3>Information Technology</h3>
+                        <p>Reliable IT support, from hardware repairs to software troubleshooting, ensuring your systems run smoothly.</p>
+                    </section>
+                    <section>
+                        <span class="icon solid major fa-shield-alt style2" aria-hidden="true"></span>
+                        <h3>Security</h3>
+                        <p>Protect your digital assets with robust security measures that safeguard against threats and breaches.</p>
+                    </section>
+                    <section>
+                        <span class="icon solid major fa-user-secret style3" aria-hidden="true"></span>
+                        <h3>Privacy</h3>
+                        <p>Ensure your personal and professional data remains private with our comprehensive privacy solutions.</p>
+                    </section>
+                </div>
+            </div>
+        </section>
 
-    </body>
+        <!-- Process -->
+        <section id="process" class="wrapper style3 special" role="region" aria-labelledby="process-heading">
+            <div class="inner">
+                <header class="major">
+                    <h2 id="process-heading">Our Process</h2>
+                    <p>How We Work to Deliver the Best IT Solutions</p>
+                </header>
+                <ul class="features">
+                    <li class="icon solid fa-comments">
+                        <h3>Phase I - Initial Consultation</h3>
+                        <p>A free 30-minute consultation to discuss your problem and potential solutions.</p>
+                    </li>
+                    <li class="icon solid fa-file-alt">
+                        <h3>Phase II - Blueprint Creation</h3>
+                        <p>We analyze your needs and create a custom solution focused on efficiency and security.</p>
+                    </li>
+                    <li class="icon solid fa-envelope-open-text">
+                        <h3>Phase III - Reporting</h3>
+                        <p>Receive a detailed report of our findings and proposed solutions via email.</p>
+                    </li>
+                    <li class="icon solid fa-handshake">
+                        <h3>Phase IV - Scope and Agreement</h3>
+                        <p>We define the project scope, discuss pricing, and finalize the agreement.</p>
+                    </li>
+                    <li class="icon solid fa-cogs">
+                        <h3>Phase V - Implementation</h3>
+                        <p>Execution of the solution, ensuring all tasks are completed to your satisfaction.</p>
+                    </li>
+                    <li class="icon solid fa-check-circle">
+                        <h3>Phase VI - Finalization</h3>
+                        <p>We finalize the project, collect feedback, and provide the final report.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Business Solutions CTA -->
+        <section id="business" class="wrapper alt style2" role="region" aria-labelledby="business-heading">
+            <section class="spotlight">
+                <div class="image">
+                    <img src="images/business.jpg" alt="Business Solutions" />
+                </div>
+                <div class="content">
+                    <h2 id="business-heading">Looking for Business Solutions?</h2>
+                    <p>If you're a business owner or need comprehensive tech solutions for your business, please visit:</p>
+                    <p><a href="https://insit.solutions/" target="_blank" rel="noopener noreferrer">InsIT Solutions</a></p>
+                    <p>They specialize in delivering robust IT services tailored to meet the unique needs of businesses, ensuring you have the right tools and support to thrive in today's digital landscape.</p>
+                </div>
+            </section>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="wrapper style1 special" role="region" aria-labelledby="contact-heading">
+            <div class="inner">
+                <header class="major">
+                    <h2 id="contact-heading">Contact Us</h2>
+                    <p>We’re here to assist you with your IT needs.</p>
+                </header>
+                <form method="post" action="contact.php">
+                    <div class="fields">
+                        <div class="field half">
+                            <label for="name">Your Name</label>
+                            <input type="text" name="name" id="name" placeholder="Enter your full name" required />
+                        </div>
+                        <div class="field half">
+                            <label for="email">Your Email Address<span aria-hidden="true">*</span></label>
+                            <input type="email" name="email" id="email" placeholder="Enter your email address" required />
+                        </div>
+                        <div class="field">
+                            <label for="message">How can we help?<span aria-hidden="true">*</span></label>
+                            <textarea name="message" id="message" rows="6" placeholder="Type your message here" required></textarea>
+                        </div>
+                    </div>
+                    <ul class="actions special">
+                        <li><input type="submit" value="Send Message" class="button primary" /></li>
+                    </ul>
+                </form>
+            </div>
+        </section>
+
+        <!-- Feedback -->
+        <section id="feedback" class="wrapper style5" role="region" aria-labelledby="feedback-heading">
+            <div class="inner">
+                <header class="major">
+                    <h2 id="feedback-heading">Feedback</h2>
+                    <p>We value your suggestions</p>
+                </header>
+                <form method="post" action="feedback.php">
+                    <div class="fields">
+                        <div class="field half">
+                            <label for="feedback-email">Your Email Address<span aria-hidden="true">*</span></label>
+                            <input type="email" name="feedback-email" id="feedback-email" placeholder="Enter your email address" required />
+                        </div>
+                        <div class="field">
+                            <label for="suggestion">Your Suggestion<span aria-hidden="true">*</span></label>
+                            <textarea name="suggestion" id="suggestion" rows="6" placeholder="Share your valuable feedback" required></textarea>
+                        </div>
+                    </div>
+                    <ul class="actions special">
+                        <li><input type="submit" value="Submit Your Suggestion" class="button primary" /></li>
+                    </ul>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer" role="contentinfo">
+            <ul class="icons">
+                <li><a href="#" class="icon brands fa-twitter" aria-label="Twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon brands fa-facebook-f" aria-label="Facebook"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon brands fa-instagram" aria-label="Instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="#" class="icon brands fa-linkedin-in" aria-label="LinkedIn"><span class="label">LinkedIn</span></a></li>
+                <li><a href="mailto:info@visptech.com" class="icon solid fa-envelope" aria-label="Email"><span class="label">Email</span></a></li>
+            </ul>
+            <p>&copy; 2024 VISP TECH LLC. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <!-- Minified and deferred JS files for better performance -->
+    <script src="assets/js/jquery.min.js" defer></script>
+    <script src="assets/js/jquery.scrollex.min.js" defer></script>
+    <script src="assets/js/jquery.scrolly.min.js" defer></script>
+    <script src="assets/js/browser.min.js" defer></script>
+    <script src="assets/js/breakpoints.min.js" defer></script>
+    <script src="assets/js/util.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+
+</body>
 </html>
