@@ -15,7 +15,7 @@
         <!-- Favicon -->
         <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-        <!-- Custom CSS for Fixed Header -->
+        <!-- Custom CSS for Fixed Header and Color Scheme -->
         <style>
             /* Make the header fixed */
             #header {
@@ -23,15 +23,66 @@
                 top: 0;
                 width: 100%;
                 z-index: 1000;
+                background: #000; /* Black background */
             }
             /* Adjust the top padding to prevent content overlap */
             #page-wrapper > *:not(#header) {
                 padding-top: 4em;
             }
-            /* Ensure the button fits the text */
-            .button.fit {
-                white-space: normal;
-                text-align: center;
+            /* Horizontal Navigation Menu */
+            #nav ul {
+                display: flex;
+                justify-content: center;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            #nav ul li {
+                margin: 0 1em;
+            }
+            #nav ul li a {
+                color: #fff; /* White text */
+                text-decoration: none;
+                font-weight: bold;
+            }
+            #nav ul li a:hover {
+                color: #b30000; /* Dark red hover effect */
+            }
+            /* Adjust the button styles */
+            .button.primary {
+                background-color: #b30000; /* Dark red button */
+                border-color: #b30000;
+            }
+            .button.primary:hover {
+                background-color: #e60000; /* Slightly brighter red on hover */
+                border-color: #e60000;
+            }
+            /* Adjust section backgrounds */
+            .wrapper.style1 {
+                background-color: #1a1a1a; /* Dark background */
+                color: #fff; /* White text */
+            }
+            .wrapper.style3 {
+                background-color: #333333; /* Slightly lighter dark background */
+                color: #fff;
+            }
+            /* Adjust link colors */
+            a {
+                color: #e60000;
+            }
+            a:hover {
+                color: #ff1a1a;
+            }
+            /* Footer styling */
+            #footer {
+                background-color: #000;
+                color: #fff;
+            }
+            #footer a {
+                color: #fff;
+            }
+            #footer a:hover {
+                color: #b30000;
             }
         </style>
     </head>
@@ -45,18 +96,11 @@
                         <h1><a href="#banner">VISP TECH</a></h1>
                         <nav id="nav">
                             <ul>
-                                <li class="special">
-                                    <a href="#menu" class="menuToggle"><span>Menu</span></a>
-                                    <div id="menu">
-                                        <ul>
-                                            <li><a href="#banner">Home</a></li>
-                                            <li><a href="#services">Services</a></li>
-                                            <li><a href="#process">Our Process</a></li>
-                                            <li><a href="#contact">Contact</a></li>
-                                            <li><a href="#feedback">Feedback</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
+                                <li><a href="#banner">Home</a></li>
+                                <li><a href="#services">Services</a></li>
+                                <li><a href="#process">Our Process</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                                <li><a href="#feedback">Feedback</a></li>
                             </ul>
                         </nav>
                     </header>
