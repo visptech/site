@@ -1,220 +1,277 @@
-<!DOCTYPE html>
-<!--
-    VISP TECH - Trusted IT Service Expert
--->
-<html lang="en">
-<head>
-    <title>VISP TECH - Trusted IT Service Expert</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="VISP TECH offers personalized IT solutions for all your digital needs and support." />
-    <meta name="keywords" content="VISP TECH, IT Services, Information Technology, Security, Privacy, Consultation" />
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="VISP TECH - Trusted IT Service Expert" />
-    <meta property="og:description" content="VISP TECH offers personalized IT solutions for all your digital needs and support." />
-    <meta property="og:image" content="https://www.visptech.com/images/og-image.jpg" />
-    <meta property="og:url" content="https://www.visptech.com/" />
-    <meta property="og:type" content="website" />
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <!-- Favicon -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/main.min.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-    <!-- Custom CSS for Fixed Header and Color Scheme -->
-    <style>
-        /* Custom styles here */
-    </style>
-</head>
-<body class="landing is-preload">
+import React, { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Mail, Shield } from 'lucide-react'
 
-    <!-- Page Wrapper -->
-    <div id="page-wrapper">
+export default function ITSecurityWebsite() {
+  const [isDark, setIsDark] = useState(true)
 
-        <!-- Header -->
-        <header id="header">
-            <h1><a href="#banner">VISP TECH</a></h1>
-            <nav id="nav">
-                <ul>
-                    <li><a href="#banner">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#process">Our Process</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#feedback">Feedback</a></li>
-                </ul>
-            </nav>
-        </header>
+  // Helper classes based on theme
+  const containerClasses = isDark
+    ? 'bg-black text-white'
+    : 'bg-white text-black'
 
-        <!-- Banner -->
-        <section id="banner" role="banner">
-            <div class="inner">
-                <h1>VISP TECH</h1>
-                <h2>Trusted IT Service Expert</h2>
-                <p>Personalized IT solutions for all your digital needs and support.</p>
-                <ul class="actions special">
-                    <li><a href="#contact" class="button primary fit scrolly">Get Your Free 30-Minute Consultation!</a></li>
-                </ul>
-            </div>
-            <a href="#services" class="more scrolly" aria-label="Learn more about our services">Learn More</a>
-        </section>
+  const cardClasses = isDark
+    ? 'bg-neutral-800 text-white'
+    : 'bg-gray-100 text-black'
 
-        <!-- Services -->
-        <section id="services" class="wrapper style1 special" role="region" aria-labelledby="services-heading">
-            <div class="inner">
-                <header class="major">
-                    <h2 id="services-heading">Services</h2>
-                    <p>Tailored IT Solutions to Meet Your Unique Needs</p>
-                </header>
-                <div class="features">
-                    <section>
-                        <span class="icon solid major fa-desktop style1" aria-hidden="true"></span>
-                        <h3>Information Technology</h3>
-                        <p>Reliable IT support, from hardware repairs to software troubleshooting, ensuring your systems run smoothly.</p>
-                    </section>
-                    <section>
-                        <span class="icon solid major fa-shield-alt style2" aria-hidden="true"></span>
-                        <h3>Security</h3>
-                        <p>Protect your digital assets with robust security measures that safeguard against threats and breaches.</p>
-                    </section>
-                    <section>
-                        <span class="icon solid major fa-user-secret style3" aria-hidden="true"></span>
-                        <h3>Privacy</h3>
-                        <p>Ensure your personal and professional data remains private with our comprehensive privacy solutions.</p>
-                    </section>
+  const textSecondaryClasses = isDark
+    ? 'text-gray-300'
+    : 'text-gray-600'
+
+  const inputClasses = isDark
+    ? 'border-neutral-600 bg-neutral-700 placeholder-gray-300 focus:ring-red-600 text-gray-100'
+    : 'border-gray-300 bg-white placeholder-gray-400 focus:ring-blue-500 text-gray-800'
+
+  return (
+    <div className={`min-h-screen flex flex-col transition-colors duration-300 ${containerClasses}`}>
+      {/* Theme Toggle */}
+      <div className="p-4 flex justify-end">
+        <Button
+          onClick={() => setIsDark(!isDark)}
+          className="rounded-lg px-4 py-2"
+        >
+          {isDark ? 'Light Theme' : 'Dark Theme'}
+        </Button>
+      </div>
+
+      {/* Hero Section */}
+      <motion.header
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col items-center justify-center py-8 px-4"
+      >
+        <h1 className="text-4xl font-bold mb-4">VISP Tech, LLC</h1>
+        <p className={`text-lg text-center max-w-2xl mb-6 ${textSecondaryClasses}`}>
+          Protecting your home network and privacy in today’s digital world. 
+          From Wi-Fi security to device protection, 
+          we’re here to help keep your family safe online.
+        </p>
+        <a href="#contact">
+          <Button
+            className={`${
+              isDark ? 'bg-red-600 hover:bg-red-700' : 'bg-blue-600 hover:bg-blue-700'
+            } text-white px-6 py-2 text-lg rounded-2xl`}
+          >
+            Contact Us
+          </Button>
+        </a>
+      </motion.header>
+
+      <main className="flex-grow max-w-5xl w-full mx-auto px-4 py-8">
+        {/* Services Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <div className="mb-8 text-center">
+            <h2 className="text-3xl font-semibold mb-2">Our Services</h2>
+            <p className={textSecondaryClasses}>
+              We specialize in residential cybersecurity solutions tailored 
+              to keep your family and home devices safe.
+            </p>
+          </div>
+
+          <Card className={`shadow-lg rounded-2xl p-4 transition-colors duration-300 ${cardClasses}`}>
+            <CardContent>
+              <div className="flex items-center space-x-2 mb-4">
+                <Shield className={`${isDark ? 'text-red-500' : 'text-blue-500'} w-6 h-6`} />
+                <h3 className="text-2xl font-semibold">Services for Residential Customers</h3>
+              </div>
+              <div className="flex flex-col space-y-4">
+
+                {/* 1. Home Cybersecurity Consulting */}
+                <motion.div
+                  className={`relative group p-3 rounded-lg transition-colors ${
+                    isDark 
+                      ? 'bg-neutral-700 hover:bg-neutral-600'
+                      : 'bg-gray-200 hover:bg-gray-300'
+                  }`}
+                  whileHover={{ x: 5 }}
+                >
+                  <h4 className="text-lg font-bold">Home Cybersecurity Consulting</h4>
+                  <motion.p
+                    initial={{ x: -10, opacity: 0 }}
+                    whileHover={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className={`text-sm mt-1 hidden group-hover:block ${textSecondaryClasses}`}
+                  >
+                    We provide personalized strategies to secure your home network 
+                    and devices against cyber threats.
+                  </motion.p>
+                </motion.div>
+
+                {/* 2. Wi-Fi Network Hardening & Privacy */}
+                <motion.div
+                  className={`relative group p-3 rounded-lg transition-colors ${
+                    isDark 
+                      ? 'bg-neutral-700 hover:bg-neutral-600'
+                      : 'bg-gray-200 hover:bg-gray-300'
+                  }`}
+                  whileHover={{ x: 5 }}
+                >
+                  <h4 className="text-lg font-bold">Wi-Fi Network Hardening & Privacy</h4>
+                  <motion.p
+                    initial={{ x: -10, opacity: 0 }}
+                    whileHover={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className={`text-sm mt-1 hidden group-hover:block ${textSecondaryClasses}`}
+                  >
+                    We’ll help you secure your wireless networks, set up robust encryption, 
+                    and maintain online privacy.
+                  </motion.p>
+                </motion.div>
+
+                {/* 3. Risk Assessment for Personal Devices */}
+                <motion.div
+                  className={`relative group p-3 rounded-lg transition-colors ${
+                    isDark
+                      ? 'bg-neutral-700 hover:bg-neutral-600'
+                      : 'bg-gray-200 hover:bg-gray-300'
+                  }`}
+                  whileHover={{ x: 5 }}
+                >
+                  <h4 className="text-lg font-bold">Risk Assessment for Personal Devices</h4>
+                  <motion.p
+                    initial={{ x: -10, opacity: 0 }}
+                    whileHover={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className={`text-sm mt-1 hidden group-hover:block ${textSecondaryClasses}`}
+                  >
+                    We evaluate your devices for potential vulnerabilities, 
+                    recommending best practices for safe usage.
+                  </motion.p>
+                </motion.div>
+
+                {/* 4. Family-Oriented Online Safety Education */}
+                <motion.div
+                  className={`relative group p-3 rounded-lg transition-colors ${
+                    isDark
+                      ? 'bg-neutral-700 hover:bg-neutral-600'
+                      : 'bg-gray-200 hover:bg-gray-300'
+                  }`}
+                  whileHover={{ x: 5 }}
+                >
+                  <h4 className="text-lg font-bold">Family-Oriented Online Safety Education</h4>
+                  <motion.p
+                    initial={{ x: -10, opacity: 0 }}
+                    whileHover={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className={`text-sm mt-1 hidden group-hover:block ${textSecondaryClasses}`}
+                  >
+                    We teach responsible browsing habits, parental controls, 
+                    and how to detect online scams for all ages.
+                  </motion.p>
+                </motion.div>
+
+              </div>
+            </CardContent>
+          </Card>
+        </motion.section>
+
+        {/* Contact Form Section */}
+        <motion.section
+          id="contact"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <div className="mb-8 text-center">
+            <h2 className="text-3xl font-semibold mb-2">Get in Touch</h2>
+            <p className={textSecondaryClasses}>
+              Ready to protect your home network? Let us know how we can assist.
+            </p>
+          </div>
+
+          <Card className={`shadow-lg rounded-2xl p-4 transition-colors duration-300 ${cardClasses}`}>
+            <CardContent>
+              <div className="flex items-center space-x-2 mb-4">
+                <Mail className={`${isDark ? 'text-red-500' : 'text-blue-500'} w-6 h-6`} />
+                <h3 className="text-2xl font-semibold">Message Us</h3>
+              </div>
+              
+              <form className="space-y-4">
+                {/* Name */}
+                <div>
+                  <label htmlFor="name" className={`block font-medium mb-1 ${textSecondaryClasses}`}>
+                    Name
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    placeholder="Your Name"
+                    className={`w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 ${inputClasses}`}
+                  />
                 </div>
-            </div>
-        </section>
 
-        <!-- Process -->
-        <section id="process" class="wrapper style3 special" role="region" aria-labelledby="process-heading">
-            <div class="inner">
-                <header class="major">
-                    <h2 id="process-heading">Our Process</h2>
-                    <p>How We Work to Deliver the Best IT Solutions</p>
-                </header>
-                <ul class="features">
-                    <li class="icon solid fa-comments">
-                        <h3>Phase I - Initial Consultation</h3>
-                        <p>A free 30-minute consultation to discuss your problem and potential solutions.</p>
-                    </li>
-                    <li class="icon solid fa-file-alt">
-                        <h3>Phase II - Blueprint Creation</h3>
-                        <p>We analyze your needs and create a custom solution focused on efficiency and security.</p>
-                    </li>
-                    <li class="icon solid fa-envelope-open-text">
-                        <h3>Phase III - Reporting</h3>
-                        <p>Receive a detailed report of our findings and proposed solutions via email.</p>
-                    </li>
-                    <li class="icon solid fa-handshake">
-                        <h3>Phase IV - Scope and Agreement</h3>
-                        <p>We define the project scope, discuss pricing, and finalize the agreement.</p>
-                    </li>
-                    <li class="icon solid fa-cogs">
-                        <h3>Phase V - Implementation</h3>
-                        <p>Execution of the solution, ensuring all tasks are completed to your satisfaction.</p>
-                    </li>
-                    <li class="icon solid fa-check-circle">
-                        <h3>Phase VI - Finalization</h3>
-                        <p>We finalize the project, collect feedback, and provide the final report.</p>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Business Solutions CTA -->
-        <section id="business" class="wrapper alt style2" role="region" aria-labelledby="business-heading">
-            <section class="spotlight">
-                <div class="image">
-                    <img src="images/business.jpg" alt="Business Solutions" />
+                {/* Email */}
+                <div>
+                  <label htmlFor="email" className={`block font-medium mb-1 ${textSecondaryClasses}`}>
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="Your Email Address"
+                    className={`w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 ${inputClasses}`}
+                  />
                 </div>
-                <div class="content">
-                    <h2 id="business-heading">Looking for Business Solutions?</h2>
-                    <p>If you're a business owner or need comprehensive tech solutions for your business, please visit:</p>
-                    <p><a href="https://insit.solutions/" target="_blank" rel="noopener noreferrer">InsIT Solutions</a></p>
-                    <p>They specialize in delivering robust IT services tailored to meet the unique needs of businesses, ensuring you have the right tools and support to thrive in today's digital landscape.</p>
+
+                {/* Phone (US Only) */}
+                <div>
+                  <label htmlFor="phone" className={`block font-medium mb-1 ${textSecondaryClasses}`}>
+                    Phone Number (US)
+                  </label>
+                  <input
+                    id="phone"
+                    type="tel"
+                    placeholder="(555) 123-4567"
+                    pattern="^\\(\\d{3}\\) \\d{3}-\\d{4}$"
+                    maxLength={14}
+                    title="Phone number must be in the format (555) 123-4567"
+                    className={`w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 ${inputClasses}`}
+                  />
                 </div>
-            </section>
-        </section>
 
-        <!-- Contact -->
-        <section id="contact" class="wrapper style1 special" role="region" aria-labelledby="contact-heading">
-            <div class="inner">
-                <header class="major">
-                    <h2 id="contact-heading">Contact Us</h2>
-                    <p>We’re here to assist you with your IT needs.</p>
-                </header>
-                <form method="post" action="contact.php">
-                    <div class="fields">
-                        <div class="field half">
-                            <label for="name">Your Name</label>
-                            <input type="text" name="name" id="name" placeholder="Enter your full name" required />
-                        </div>
-                        <div class="field half">
-                            <label for="email">Your Email Address<span aria-hidden="true">*</span></label>
-                            <input type="email" name="email" id="email" placeholder="Enter your email address" required />
-                        </div>
-                        <div class="field">
-                            <label for="message">How can we help?<span aria-hidden="true">*</span></label>
-                            <textarea name="message" id="message" rows="6" placeholder="Type your message here" required></textarea>
-                        </div>
-                    </div>
-                    <ul class="actions special">
-                        <li><input type="submit" value="Send Message" class="button primary" /></li>
-                    </ul>
-                </form>
-            </div>
-        </section>
+                {/* Message */}
+                <div>
+                  <label htmlFor="message" className={`block font-medium mb-1 ${textSecondaryClasses}`}>
+                    Message (Max 300 Characters)
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={5}
+                    maxLength={300}
+                    placeholder="How can we help you at home?"
+                    className={`w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 ${inputClasses}`}
+                  />
+                </div>
 
-        <!-- Feedback -->
-        <section id="feedback" class="wrapper style5" role="region" aria-labelledby="feedback-heading">
-            <div class="inner">
-                <header class="major">
-                    <h2 id="feedback-heading">Feedback</h2>
-                    <p>We value your suggestions</p>
-                </header>
-                <form method="post" action="feedback.php">
-                    <div class="fields">
-                        <div class="field half">
-                            <label for="feedback-email">Your Email Address<span aria-hidden="true">*</span></label>
-                            <input type="email" name="feedback-email" id="feedback-email" placeholder="Enter your email address" required />
-                        </div>
-                        <div class="field">
-                            <label for="suggestion">Your Suggestion<span aria-hidden="true">*</span></label>
-                            <textarea name="suggestion" id="suggestion" rows="6" placeholder="Share your valuable feedback" required></textarea>
-                        </div>
-                    </div>
-                    <ul class="actions special">
-                        <li><input type="submit" value="Submit Your Suggestion" class="button primary" /></li>
-                    </ul>
-                </form>
-            </div>
-        </section>
+                <Button
+                  type="submit"
+                  className={`w-full rounded-lg px-6 py-2 text-white ${
+                    isDark
+                      ? 'bg-red-600 hover:bg-red-700 focus:ring-red-700'
+                      : 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-700'
+                  }`}
+                >
+                  Submit
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+        </motion.section>
+      </main>
 
-        <!-- Footer -->
-        <footer id="footer" role="contentinfo">
-            <ul class="icons">
-                <li><a href="#" class="icon brands fa-twitter" aria-label="Twitter"><span class="label">Twitter</span></a></li>
-                <li><a href="#" class="icon brands fa-facebook-f" aria-label="Facebook"><span class="label">Facebook</span></a></li>
-                <li><a href="#" class="icon brands fa-instagram" aria-label="Instagram"><span class="label">Instagram</span></a></li>
-                <li><a href="#" class="icon brands fa-linkedin-in" aria-label="LinkedIn"><span class="label">LinkedIn</span></a></li>
-                <li><a href="mailto:info@visptech.com" class="icon solid fa-envelope" aria-label="Email"><span class="label">Email</span></a></li>
-            </ul>
-            <p>&copy; 2024 VISP TECH LLC. All rights reserved.</p>
-        </footer>
-
+      <footer className={`py-4 text-center text-sm ${textSecondaryClasses}`}>
+        <p>© {new Date().getFullYear()} VISP Tech, LLC. All rights reserved.</p>
+      </footer>
     </div>
-
-    <!-- Scripts -->
-    <!-- Minified and deferred JS files for better performance -->
-    <script src="assets/js/jquery.min.js" defer></script>
-    <script src="assets/js/jquery.scrollex.min.js" defer></script>
-    <script src="assets/js/jquery.scrolly.min.js" defer></script>
-    <script src="assets/js/browser.min.js" defer></script>
-    <script src="assets/js/breakpoints.min.js" defer></script>
-    <script src="assets/js/util.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
-
-</body>
-</html>
+  )
+}
