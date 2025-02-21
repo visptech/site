@@ -2,360 +2,132 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>VISP Tech, LLC</title>
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- React + ReactDOM (UMD) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js" integrity="sha512-Uk+EtV+fAb0ys5N3AF8Z1k7Sr20UC8FRQ1ZCOenbnjz3jB5Jocuh77y8YvqcyQEa6Y6De2KIBf1CxnqsDXYzHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js" integrity="sha512-lG2Enp3HTyx3ITv27Ex0tZ+Ncx1mTzKSd3jj9rHJ6p7DUrb4NDopQKm4rn5ZcGNgNDVC9FZ3GU3Bs3G/ni2fnQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-  <!-- Babel for in-browser JSX compilation -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-  <!-- Framer Motion UMD -->
-  <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VISP TECH - Your Digital Security & IT Solutions</title>
+  <style>
+    /* Color Variables */
+    :root {
+      --bg-light: #f8f8f8;
+      --text-light: #333;
+      --bg-dark: #222;
+      --text-dark: #eee;
+      --primary: #4CAF50;   /* Pastel green */
+      --secondary: #ff4081; /* Pastel pink */
+      --transition-speed: 0.3s;
+    }
+
+    /* Base Styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: background-color var(--transition-speed), color var(--transition-speed);
+    }
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+    
+    header, section {
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+    header { animation-delay: 0.2s; }
+    section { animation-delay: 0.4s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    
+    h1, h2, h3 {
+      text-align: center;
+    }
+    
+    /* Feature List */
+    .features {
+      list-style: none;
+      padding: 0;
+    }
+    .features li {
+      margin: 10px 0;
+      padding-left: 25px;
+      position: relative;
+    }
+    .features li::before {
+      content: "✅";
+      position: absolute;
+      left: 0;
+    }
+    
+    /* Contact Section */
+    .contact {
+      text-align: center;
+      margin-top: 30px;
+    }
+    
+    /* Toggle Button */
+    .toggle-mode {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color var(--transition-speed);
+    }
+    .toggle-mode:hover {
+      background: var(--secondary);
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 600px) {
+      .container {
+        padding: 10px;
+      }
+      .toggle-mode {
+        padding: 8px;
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
-<body class="min-h-screen">
-
-<div id="root"></div>
-
-<script type="text/babel">
-  const { useState } = React;
-  const { motion } = window['framerMotion'];
-
-  // Simple Card + CardContent components (to mimic your previous UI library)
-  function Card({ children, className }) {
-    return (
-      <div className={"shadow-lg rounded-2xl p-4 transition-colors duration-300 " + (className || "")}>
-        {children}
-      </div>
-    );
-  }
-  function CardContent({ children, className }) {
-    return (
-      <div className={className || ""}>
-        {children}
-      </div>
-    );
-  }
-
-  // SVG Icons (Shield and Mail) as React components
-  function ShieldIcon({ className }) {
-    return (
-      <svg
-        className={className}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        viewBox="0 0 24 24"
-      >
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      </svg>
-    );
-  }
-
-  function MailIcon({ className }) {
-    return (
-      <svg
-        className={className}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        viewBox="0 0 24 24"
-      >
-        <path d="M4 4h16v16H4z" />
-        <path d="M22 4l-10 7L2 4" />
-      </svg>
-    );
-  }
-
-  function ITSecurityWebsite() {
-    const [isDark, setIsDark] = useState(true);
-
-    // Helper classes based on theme
-    const containerClasses = isDark
-      ? 'bg-black text-white'
-      : 'bg-white text-black';
-
-    const cardClasses = isDark
-      ? 'bg-neutral-800 text-white'
-      : 'bg-gray-100 text-black';
-
-    const textSecondaryClasses = isDark
-      ? 'text-gray-300'
-      : 'text-gray-600';
-
-    const inputClasses = isDark
-      ? 'border-neutral-600 bg-neutral-700 placeholder-gray-300 focus:ring-red-600 text-gray-100'
-      : 'border-gray-300 bg-white placeholder-gray-400 focus:ring-blue-500 text-gray-800';
-
-    return (
-      <div className={"min-h-screen flex flex-col transition-colors duration-300 " + containerClasses}>
-        {/* Theme Toggle */}
-        <div className="p-4 flex justify-end">
-          <button
-            onClick={() => setIsDark(!isDark)}
-            className="rounded-lg px-4 py-2 border border-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800"
-          >
-            {isDark ? "Light Theme" : "Dark Theme"}
-          </button>
-        </div>
-
-        {/* Hero Section */}
-        <motion.header
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col items-center justify-center py-8 px-4"
-        >
-          <h1 className="text-4xl font-bold mb-4">VISP Tech, LLC</h1>
-          <p className={"text-lg text-center max-w-2xl mb-6 " + textSecondaryClasses}>
-            Protecting your home network and privacy in today’s digital world.
-            From Wi-Fi security to device protection,
-            we’re here to help keep your family safe online.
-          </p>
-          <a href="#contact">
-            <button
-              className={
-                (isDark ? 'bg-red-600 hover:bg-red-700' : 'bg-blue-600 hover:bg-blue-700') +
-                " text-white px-6 py-2 text-lg rounded-2xl"
-              }
-            >
-              Contact Us
-            </button>
-          </a>
-        </motion.header>
-
-        <main className="flex-grow max-w-5xl w-full mx-auto px-4 py-8">
-          {/* Services Section */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="mb-12"
-          >
-            <div className="mb-8 text-center">
-              <h2 className="text-3xl font-semibold mb-2">Our Services</h2>
-              <p className={textSecondaryClasses}>
-                We specialize in residential cybersecurity solutions
-                tailored to keep your family and home devices safe.
-              </p>
-            </div>
-
-            <Card className={cardClasses}>
-              <CardContent>
-                <div className="flex items-center space-x-2 mb-4">
-                  <ShieldIcon className={(isDark ? "text-red-500" : "text-blue-500") + " w-6 h-6"} />
-                  <h3 className="text-2xl font-semibold">Services for Residential Customers</h3>
-                </div>
-                <div className="flex flex-col space-y-4">
-                  {/* 1. Home Cybersecurity Consulting */}
-                  <motion.div
-                    className={
-                      "relative group p-3 rounded-lg transition-colors " +
-                      (isDark ? "bg-neutral-700 hover:bg-neutral-600" : "bg-gray-200 hover:bg-gray-300")
-                    }
-                    whileHover={{ x: 5 }}
-                  >
-                    <h4 className="text-lg font-bold">Home Cybersecurity Consulting</h4>
-                    <motion.p
-                      initial={{ x: -10, opacity: 0 }}
-                      whileHover={{ x: 0, opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                      className={"text-sm mt-1 hidden group-hover:block " + textSecondaryClasses}
-                    >
-                      We provide personalized strategies to secure your home network
-                      and devices against cyber threats.
-                    </motion.p>
-                  </motion.div>
-
-                  {/* 2. Wi-Fi Network Hardening & Privacy */}
-                  <motion.div
-                    className={
-                      "relative group p-3 rounded-lg transition-colors " +
-                      (isDark ? "bg-neutral-700 hover:bg-neutral-600" : "bg-gray-200 hover:bg-gray-300")
-                    }
-                    whileHover={{ x: 5 }}
-                  >
-                    <h4 className="text-lg font-bold">Wi-Fi Network Hardening & Privacy</h4>
-                    <motion.p
-                      initial={{ x: -10, opacity: 0 }}
-                      whileHover={{ x: 0, opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                      className={"text-sm mt-1 hidden group-hover:block " + textSecondaryClasses}
-                    >
-                      We’ll help you secure your wireless networks, set up robust encryption,
-                      and maintain online privacy.
-                    </motion.p>
-                  </motion.div>
-
-                  {/* 3. Risk Assessment for Personal Devices */}
-                  <motion.div
-                    className={
-                      "relative group p-3 rounded-lg transition-colors " +
-                      (isDark ? "bg-neutral-700 hover:bg-neutral-600" : "bg-gray-200 hover:bg-gray-300")
-                    }
-                    whileHover={{ x: 5 }}
-                  >
-                    <h4 className="text-lg font-bold">Risk Assessment for Personal Devices</h4>
-                    <motion.p
-                      initial={{ x: -10, opacity: 0 }}
-                      whileHover={{ x: 0, opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                      className={"text-sm mt-1 hidden group-hover:block " + textSecondaryClasses}
-                    >
-                      We evaluate your devices for potential vulnerabilities,
-                      recommending best practices for safe usage.
-                    </motion.p>
-                  </motion.div>
-
-                  {/* 4. Family-Oriented Online Safety Education */}
-                  <motion.div
-                    className={
-                      "relative group p-3 rounded-lg transition-colors " +
-                      (isDark ? "bg-neutral-700 hover:bg-neutral-600" : "bg-gray-200 hover:bg-gray-300")
-                    }
-                    whileHover={{ x: 5 }}
-                  >
-                    <h4 className="text-lg font-bold">Family-Oriented Online Safety Education</h4>
-                    <motion.p
-                      initial={{ x: -10, opacity: 0 }}
-                      whileHover={{ x: 0, opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                      className={"text-sm mt-1 hidden group-hover:block " + textSecondaryClasses}
-                    >
-                      We teach responsible browsing habits, parental controls,
-                      and how to detect online scams for all ages.
-                    </motion.p>
-                  </motion.div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.section>
-
-          {/* Contact Form Section */}
-          <motion.section
-            id="contact"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <div className="mb-8 text-center">
-              <h2 className="text-3xl font-semibold mb-2">Get in Touch</h2>
-              <p className={textSecondaryClasses}>
-                Ready to protect your home network? Let us know how we can assist.
-              </p>
-            </div>
-
-            <Card className={cardClasses}>
-              <CardContent>
-                <div className="flex items-center space-x-2 mb-4">
-                  <MailIcon className={(isDark ? "text-red-500" : "text-blue-500") + " w-6 h-6"} />
-                  <h3 className="text-2xl font-semibold">Message Us</h3>
-                </div>
-                
-                <form className="space-y-4">
-                  {/* Name */}
-                  <div>
-                    <label htmlFor="name" className={"block font-medium mb-1 " + textSecondaryClasses}>
-                      Name
-                    </label>
-                    <input
-                      id="name"
-                      type="text"
-                      placeholder="Your Name"
-                      className={
-                        "w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 " +
-                        inputClasses
-                      }
-                    />
-                  </div>
-
-                  {/* Email */}
-                  <div>
-                    <label htmlFor="email" className={"block font-medium mb-1 " + textSecondaryClasses}>
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      placeholder="Your Email Address"
-                      className={
-                        "w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 " +
-                        inputClasses
-                      }
-                    />
-                  </div>
-
-                  {/* Phone (placeholder only) */}
-                  <div>
-                    <label htmlFor="phone" className={"block font-medium mb-1 " + textSecondaryClasses}>
-                      Phone Number (US)
-                    </label>
-                    <input
-                      id="phone"
-                      type="tel"
-                      placeholder="(555) 123-4567"
-                      className={
-                        "w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 " +
-                        inputClasses
-                      }
-                    />
-                  </div>
-
-                  {/* Message */}
-                  <div>
-                    <label htmlFor="message" className={"block font-medium mb-1 " + textSecondaryClasses}>
-                      Message (Max 300 Characters)
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={5}
-                      maxLength={300}
-                      placeholder="How can we help you at home?"
-                      className={
-                        "w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 " +
-                        inputClasses
-                      }
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className={
-                      "w-full rounded-lg px-6 py-2 text-white " +
-                      (isDark
-                        ? "bg-red-600 hover:bg-red-700 focus:ring-red-700"
-                        : "bg-blue-600 hover:bg-blue-700 focus:ring-blue-700")
-                    }
-                  >
-                    Submit
-                  </button>
-                </form>
-              </CardContent>
-            </Card>
-          </motion.section>
-        </main>
-
-        <footer className={"py-4 text-center text-sm " + textSecondaryClasses}>
-          <p>© {new Date().getFullYear()} VISP Tech, LLC. All rights reserved.</p>
-        </footer>
-      </div>
-    );
-  }
-
-  // Render our app into #root
-  ReactDOM.render(<ITSecurityWebsite />, document.getElementById('root'));
-</script>
+<body>
+  <button class="toggle-mode" onclick="toggleMode()">Toggle Dark/Light Mode</button>
+  <div class="container">
+    <header>
+      <h1>VISP TECH</h1>
+      <h2>Your Digital Security &amp; IT Solutions</h2>
+      <p>Empowering Everyday Users with Technology</p>
+    </header>
+    <section>
+      <h3>What We Offer:</h3>
+      <ul class="features">
+        <li><strong>Virtualization</strong> – Optimize and streamline your digital workspace</li>
+        <li><strong>IT Support</strong> – Hardware &amp; software assistance tailored for you</li>
+        <li><strong>Privacy Protection</strong> – Secure your personal data &amp; online presence</li>
+        <li><strong>Cybersecurity</strong> – Strengthen your defenses against digital threats</li>
+      </ul>
+    </section>
+    <section class="contact">
+      <h3>Book an Appointment</h3>
+      <p>Have questions or need help? Reach out today!</p>
+      <p>Email: <a href="mailto:visptech01@gmail.com">visptech01@gmail.com</a></p>
+    </section>
+  </div>
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
 </body>
 </html>
