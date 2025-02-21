@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>VISP TECH - Enter the Digital Fortress</title>
 
-  <!-- 1) Tailwind Configuration (darkMode: 'class') -->
+  <!-- Tailwind Configuration: darkMode: 'class' -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -32,65 +32,63 @@
     }
   </script>
 
-  <!-- 2) Tailwind CDN -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- 3) Global CSS Variables (for rainbow colors) -->
+  <!-- Global CSS Variables for the rainbow hues -->
   <style>
     :root {
-      /* Adjust these to tweak the rainbow hues */
       --color-1: 0 100% 63%;
       --color-2: 270 100% 63%;
       --color-3: 210 100% 63%;
       --color-4: 195 100% 63%;
       --color-5: 90 100% 63%;
     }
-  </style>
-
-  <!-- 4) Additional Base Styles -->
-  <style>
-    /* Make sure the flickering grid sits behind everything */
+    /* Ensure the flickering grid is behind everything */
     #flickeringGrid {
       position: absolute;
       inset: 0;
-      z-index: -10; /* behind the content */
+      z-index: -10;
     }
-    /* A simple transition for body background/text when toggling dark mode */
+    /* Smooth transitions for background/text color changes */
     html, body {
       transition: background-color 0.3s, color 0.3s;
     }
   </style>
 </head>
 
-<!-- 5) Body uses light mode by default, toggled to dark mode via JS -->
+<!-- Default to light mode, toggled to dark by JS adding class="dark" to <html> -->
 <body class="bg-neutral-100 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 relative min-h-screen">
 
-  <!-- THEME TOGGLE BUTTON (Sun for Light, Moon for Dark) -->
+  <!-- Theme Toggle Button (top-right) -->
   <button id="themeToggle" class="fixed top-4 right-4 z-50 focus:outline-none">
-    <!-- White Sun Icon (shown when in light mode) -->
+    <!-- White Sun Icon (shown in light mode) -->
     <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-8 h-8 text-white">
       <path d="M12 4.354a1 1 0 011 1V7a1 1 0 11-2 0V5.354a1 1 0 011-1zm5.657 2.343a1 1 0 011.414 1.414l-1.242 1.242a1 1 0 01-1.414-1.414l1.242-1.242zM12 16a4 4 0 110-8 4 4 0 010 8zm6.646 2.354a1 1 0 10-1.414 1.414l1.242 1.242a1 1 0 001.414-1.414l-1.242-1.242zM4.354 12a1 1 0 011-1H7a1 1 0 110 2H5.354a1 1 0 01-1-1zm2.343-5.657a1 1 0 011.414 0l1.242 1.242a1 1 0 11-1.414 1.414L6.697 7.757a1 1 0 010-1.414zM4.354 16a1 1 0 000 2H7a1 1 0 100-2H4.354zm2.343 3.657a1 1 0 001.414-1.414l-1.242-1.242a1 1 0 10-1.414 1.414l1.242 1.242zM16 12a1 1 0 011-1h1.646a1 1 0 110 2H17a1 1 0 01-1-1z"/>
     </svg>
-    <!-- Moon Icon (shown when in dark mode) -->
+    <!-- Moon Icon (shown in dark mode) -->
     <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-8 h-8 text-white hidden">
       <path d="M21.752 15.002A9 9 0 0112 3a9.003 9.003 0 00-9 9c0 4.97 4.03 9 9 9a9.003 9.003 0 009.752-6.998z"/>
     </svg>
   </button>
 
-  <!-- FLICKERING GRID BACKGROUND -->
+  <!-- Flickering Grid Background -->
   <div id="flickeringGrid">
     <canvas id="flickeringCanvas" class="w-full h-full"></canvas>
   </div>
 
-  <!-- MAIN CONTENT CONTAINER -->
-  <div class="relative z-10 max-w-3xl mx-auto mt-16 p-8 rounded-xl shadow-lg backdrop-blur-lg bg-[rgba(0,0,0,0.6)] text-white text-center">
+  <!-- Main Content Container -->
+  <div class="relative z-10 max-w-3xl mx-auto mt-16 p-8 rounded-xl shadow-lg backdrop-blur-lg
+              bg-white/90 text-black
+              dark:bg-[rgba(0,0,0,0.6)] dark:text-white
+              text-center">
 
-    <!-- HEADINGS -->
+    <!-- Headings -->
     <h1 class="text-4xl md:text-6xl font-bold uppercase tracking-widest mb-2">VISP TECH</h1>
     <h2 class="text-xl md:text-2xl mb-4">Enter the Digital Fortress</h2>
-    <p class="mb-6 text-gray-200">Your digital world, fortified.</p>
+    <p class="mb-6">Your digital world, fortified.</p>
 
-    <!-- RAINBOW BUTTON CTA -->
+    <!-- Rainbow Button (CTA) -->
     <a
       href="mailto:visptech01@gmail.com"
       class="group relative inline-flex h-11 animate-rainbow cursor-pointer items-center justify-center rounded-xl border-0 bg-[length:200%] px-8 py-2 font-medium text-white transition-colors [background-clip:padding-box,border-box,border-box] [background-origin:border-box] [border:calc(0.08*1rem)_solid_transparent] focus:outline-none focus:ring-1 focus:ring-ring disabled:pointer-events-none disabled:opacity-50 before:absolute before:bottom-[-20%] before:left-1/2 before:z-0 before:h-1/5 before:w-3/5 before:-translate-x-1/2 before:animate-rainbow before:bg-[linear-gradient(90deg,hsla(var(--color-1),1),hsla(var(--color-5),1),hsla(var(--color-3),1),hsla(var(--color-4),1),hsla(var(--color-2),1))] before:bg-[length:200%] before:[filter:blur(calc(0.8*1rem))] bg-[linear-gradient(#121213,#121213),linear-gradient(#121213_50%,rgba(18,18,19,0.6)_80%,rgba(18,18,19,0)),linear-gradient(90deg,hsla(var(--color-1),1),hsla(var(--color-5),1),hsla(var(--color-3),1),hsla(var(--color-4),1),hsla(var(--color-2),1))] dark:bg-[linear-gradient(#fff,#fff),linear-gradient(#fff_50%,rgba(255,255,255,0.6)_80%,rgba(0,0,0,0)),linear-gradient(90deg,hsla(var(--color-1),1),hsla(var(--color-5),1),hsla(var(--color-3),1),hsla(var(--color-4),1),hsla(var(--color-2),1))]"
@@ -98,42 +96,42 @@
       Secure Your Future Now
     </a>
 
-    <!-- SERVICE CARDS -->
+    <!-- Service Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-      <div class="bg-[rgba(255,255,255,0.1)] p-4 rounded-lg text-center font-semibold hover:-translate-y-1 transition-transform">
+      <div class="p-4 rounded-lg bg-black/10 dark:bg-white/10 font-semibold hover:-translate-y-1 transition-transform">
         Virtualization – Optimize and streamline your workspace
       </div>
-      <div class="bg-[rgba(255,255,255,0.1)] p-4 rounded-lg text-center font-semibold hover:-translate-y-1 transition-transform">
+      <div class="p-4 rounded-lg bg-black/10 dark:bg-white/10 font-semibold hover:-translate-y-1 transition-transform">
         IT Support – Tailored assistance for hardware &amp; software
       </div>
-      <div class="bg-[rgba(255,255,255,0.1)] p-4 rounded-lg text-center font-semibold hover:-translate-y-1 transition-transform">
+      <div class="p-4 rounded-lg bg-black/10 dark:bg-white/10 font-semibold hover:-translate-y-1 transition-transform">
         Privacy Protection – Secure your personal &amp; online data
       </div>
-      <div class="bg-[rgba(255,255,255,0.1)] p-4 rounded-lg text-center font-semibold hover:-translate-y-1 transition-transform">
+      <div class="p-4 rounded-lg bg-black/10 dark:bg-white/10 font-semibold hover:-translate-y-1 transition-transform">
         Cybersecurity – Advanced protection against digital threats
       </div>
     </div>
 
-    <!-- CONTACT INFO -->
-    <p class="mt-6 text-gray-200">
+    <!-- Contact Info -->
+    <p class="mt-6">
       Need assistance? Send a secure transmission to
-      <a href="mailto:visptech01@gmail.com" class="font-bold text-[#0ef] hover:underline">
+      <a href="mailto:visptech01@gmail.com" class="font-bold text-blue-600 dark:text-[#0ef] hover:underline">
         visptech01@gmail.com
       </a>
     </p>
   </div>
 
-  <!-- JS: THEME TOGGLE & FLICKERING GRID -->
+  <!-- Scripts: Theme Toggle & Flickering Grid -->
   <script>
-    /******************************************************
+    /*********************************************************
      * THEME TOGGLE LOGIC
-     ******************************************************/
+     *********************************************************/
     const themeToggle = document.getElementById("themeToggle");
     const sunIcon = document.getElementById("sunIcon");
     const moonIcon = document.getElementById("moonIcon");
 
     themeToggle.addEventListener("click", () => {
-      // Toggle 'dark' class on the <html> element (Tailwind's recommended approach)
+      // Toggle .dark on <html>
       document.documentElement.classList.toggle("dark");
 
       // Switch icons
@@ -146,24 +144,24 @@
       }
     });
 
-    /******************************************************
-     * FLICKERING GRID BACKGROUND (Plain JavaScript)
-     ******************************************************/
+    /*********************************************************
+     * FLICKERING GRID BACKGROUND (Plain JS)
+     *********************************************************/
     (function initFlickeringGrid() {
-      const squareSize = 4;
-      const gridGap = 6;
-      const flickerChance = 0.1;
-      const maxOpacity = 0.5;
-      const color = "#6B7280"; // Gray color
-
       const container = document.getElementById("flickeringGrid");
       const canvas = document.getElementById("flickeringCanvas");
       const ctx = canvas.getContext("2d");
 
-      let gridParams = null;
+      // Settings
+      const squareSize = 4;
+      const gridGap = 6;
+      const flickerChance = 0.1;
+      const maxOpacity = 0.5;
+      const baseColor = toRGBA("#6B7280"); // Gray color
+
+      let gridParams;
       let lastTime = 0;
 
-      // Convert color string to "rgba(r,g,b," prefix
       function toRGBA(colorStr) {
         const tmpCanvas = document.createElement("canvas");
         tmpCanvas.width = tmpCanvas.height = 1;
@@ -173,9 +171,8 @@
         const [r, g, b] = tmpCtx.getImageData(0, 0, 1, 1).data;
         return `rgba(${r}, ${g}, ${b},`;
       }
-      const baseColor = toRGBA(color);
 
-      // Setup canvas size, generate squares
+      // Set up canvas & squares
       function setupCanvas() {
         const width = container.clientWidth;
         const height = container.clientHeight;
@@ -192,11 +189,9 @@
         for (let i = 0; i < squares.length; i++) {
           squares[i] = Math.random() * maxOpacity;
         }
-
-        return { width, height, cols, rows, squares, dpr };
+        return { width, height, dpr, cols, rows, squares };
       }
 
-      // Flicker squares randomly
       function updateSquares(squares, deltaTime) {
         for (let i = 0; i < squares.length; i++) {
           if (Math.random() < flickerChance * deltaTime) {
@@ -205,9 +200,8 @@
         }
       }
 
-      // Draw the grid
       function drawGrid(params) {
-        const { width, height, cols, rows, squares, dpr } = params;
+        const { width, height, dpr, cols, rows, squares } = params;
         ctx.clearRect(0, 0, width * dpr, height * dpr);
         for (let i = 0; i < cols; i++) {
           for (let j = 0; j < rows; j++) {
@@ -223,7 +217,6 @@
         }
       }
 
-      // Animation loop
       function animate(time) {
         const deltaTime = (time - lastTime) / 1000;
         lastTime = time;
@@ -236,6 +229,7 @@
         gridParams = setupCanvas();
       }
 
+      // Initialize
       gridParams = setupCanvas();
       requestAnimationFrame(animate);
       window.addEventListener("resize", onResize);
