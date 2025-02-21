@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Interactive Waves - Light/Dark Mode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VISP TECH - Your Digital Security &amp; IT Solutions</title>
+  <!-- Google Fonts (Optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    /* Reset and Base Styles */
+    /* Reset & Base Styles */
     * {
       margin: 0;
       padding: 0;
@@ -12,7 +15,7 @@
     }
     html, body {
       height: 100%;
-      font-family: sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
     body {
       margin: 0;
@@ -24,13 +27,12 @@
       background-color: #222222;
       color: #ffffff;
     }
-
     /* Toggle Button */
     .toggle-btn {
       position: fixed;
       top: 15px;
       right: 15px;
-      z-index: 9999;
+      z-index: 1000;
       padding: 10px 16px;
       font-size: 14px;
       cursor: pointer;
@@ -43,16 +45,14 @@
     .toggle-btn:hover {
       background-color: #ff4081;
     }
-
-    /* Main Container */
+    /* Container for Waves Background */
     .container {
       position: relative;
       width: 100%;
       height: 100%;
       overflow: hidden;
     }
-
-    /* The Waves Canvas & Pointer Dot */
+    /* Waves Canvas & Pointer */
     .wave-canvas {
       display: block;
       width: 100%;
@@ -71,53 +71,125 @@
       transform: translate(-50%, -50%);
       will-change: transform;
     }
-
-    /* Example Text Overlay */
+    /* Content Overlay */
     .content {
       position: absolute;
       z-index: 10;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      max-width: 800px;
+      width: 90%;
       text-align: center;
-      background-color: rgba(255, 255, 255, 0.7);
-      color: #000;
+      background-color: rgba(255, 255, 255, 0.8);
       padding: 20px;
       border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       transition: background-color 0.3s, color 0.3s;
     }
     body.dark-mode .content {
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.7);
       color: #fff;
+    }
+    /* Typography */
+    .content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .content h2 {
+      font-size: 1.75rem;
+      margin-bottom: 10px;
+    }
+    .content h3 {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    .content p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto 10px auto;
+      text-align: left;
+      max-width: 600px;
+    }
+    .content ul li {
+      margin: 8px 0;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .content ul li::before {
+      content: "✅ ";
+      margin-right: 8px;
+    }
+    .content a {
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .content a:hover {
+      text-decoration: underline;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .content h1 {
+        font-size: 2rem;
+      }
+      .content h2 {
+        font-size: 1.5rem;
+      }
+      .content h3 {
+        font-size: 1.25rem;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Toggle Button for Dark/Light Mode -->
+  <!-- Toggle Dark/Light Mode Button -->
   <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
-
-  <!-- Main Container with Waves -->
+  
+  <!-- Container for Waves & Landing Page Content -->
   <div class="container" id="waveContainer">
     <canvas id="waveCanvas" class="wave-canvas"></canvas>
     <div id="wavePointer" class="wave-pointer"></div>
-
-    <!-- Example Content Over the Waves -->
+    
+    <!-- VISP TECH Landing Page Content -->
     <div class="content">
-      <h2>Interactive Waves</h2>
-      <p>Move your mouse to interact with the waves.</p>
+      <h1>VISP TECH</h1>
+      <h2>Your Digital Security &amp; IT Solutions</h2>
+      <h3>Empowering Everyday Users with Technology</h3>
+      <p>
+        At <strong>VISP TECH</strong>, we help you take control of your digital world.
+        Whether you need assistance with <strong>Virtualization, IT Support, Privacy, or Security</strong>,
+        we provide expert guidance to everyday consumers looking for simple, effective solutions.
+      </p>
+      <h3>What We Offer:</h3>
+      <ul>
+        <li><strong>Virtualization</strong> – Optimize and streamline your digital workspace</li>
+        <li><strong>IT Support</strong> – Hardware &amp; software assistance tailored for you</li>
+        <li><strong>Privacy Protection</strong> – Secure your personal data &amp; online presence</li>
+        <li><strong>Cybersecurity</strong> – Strengthen your defenses against digital threats</li>
+      </ul>
+      <h3>Book an Appointment</h3>
+      <p>Have questions or need help? Reach out today!</p>
+      <p>📧 <a href="mailto:visptech01@gmail.com">visptech01@gmail.com</a></p>
     </div>
   </div>
-
+  
   <script>
     /*****************************************************************
-     *  Light/Dark Mode Toggle
+     * Dark/Light Mode Toggle
      *****************************************************************/
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
     }
-
+    
     /*****************************************************************
-     *  Grad and Noise Classes (ported from original code)
+     * Grad and Noise Classes (for Perlin Noise)
      *****************************************************************/
     class Grad {
       constructor(x, y, z) {
@@ -129,7 +201,7 @@
         return this.x * x + this.y * y;
       }
     }
-
+    
     class Noise {
       constructor(seed = 0) {
         this.grad3 = [
@@ -163,7 +235,6 @@
         this.gradP = new Array(512);
         this.seed(seed);
       }
-
       seed(seed) {
         if (seed > 0 && seed < 1) seed *= 65536;
         seed = Math.floor(seed);
@@ -176,15 +247,12 @@
           this.gradP[i] = this.gradP[i + 256] = this.grad3[v % 12];
         }
       }
-
       fade(t) {
         return t * t * t * (t * (t * 6 - 15) + 10);
       }
-
       lerp(a, b, t) {
         return (1 - t) * a + t * b;
       }
-
       perlin2(x, y) {
         let X = Math.floor(x), Y = Math.floor(y);
         x -= X; y -= Y;
@@ -201,12 +269,12 @@
         );
       }
     }
-
+    
     /*****************************************************************
-     *  Wave Logic in Plain JavaScript
+     * Wave Background Logic (Plain JavaScript)
      *****************************************************************/
     const waveSettings = {
-      lineColor: "rgba(0, 0, 0, 0.3)",  // Default for light mode
+      lineColor: "rgba(0,0,0,0.3)",
       waveSpeedX: 0.0125,
       waveSpeedY: 0.005,
       waveAmpX: 32,
@@ -217,7 +285,6 @@
       tension: 0.005,
       maxCursorMove: 100,
     };
-
     let waveCanvas, waveCtx, wavePointer;
     let bounding = { width: 0, height: 0, left: 0, top: 0 };
     let noiseGen = new Noise(Math.random());
@@ -229,19 +296,19 @@
       v: 0, vs: 0,
       a: 0, set: false
     };
-
+    
     function initWaves() {
       const container = document.getElementById("waveContainer");
       waveCanvas = document.getElementById("waveCanvas");
       wavePointer = document.getElementById("wavePointer");
       waveCtx = waveCanvas.getContext("2d");
-
+      
       function setSize() {
         bounding = container.getBoundingClientRect();
         waveCanvas.width = bounding.width;
         waveCanvas.height = bounding.height;
       }
-
+      
       function setLines() {
         const { width, height } = bounding;
         lines = [];
@@ -250,7 +317,6 @@
         const totalPoints = Math.ceil(oHeight / waveSettings.yGap);
         const xStart = (width - waveSettings.xGap * totalLines) / 2;
         const yStart = (height - waveSettings.yGap * totalPoints) / 2;
-
         for (let i = 0; i <= totalLines; i++) {
           const pts = [];
           for (let j = 0; j <= totalPoints; j++) {
@@ -264,7 +330,7 @@
           lines.push(pts);
         }
       }
-
+      
       function movePoints(time) {
         lines.forEach((pts) => {
           pts.forEach((p) => {
@@ -274,54 +340,44 @@
             ) * 12;
             p.wave.x = Math.cos(move) * waveSettings.waveAmpX;
             p.wave.y = Math.sin(move) * waveSettings.waveAmpY;
-
             const dx = p.x - mouse.sx, dy = p.y - mouse.sy;
             const dist = Math.hypot(dx, dy);
             const l = Math.max(175, mouse.vs);
-
             if (dist < l) {
               const s = 1 - dist / l;
               const f = Math.cos(dist * 0.001) * s;
               p.cursor.vx += Math.cos(mouse.a) * f * l * mouse.vs * 0.00065;
               p.cursor.vy += Math.sin(mouse.a) * f * l * mouse.vs * 0.00065;
             }
-
             p.cursor.vx += (0 - p.cursor.x) * waveSettings.tension;
             p.cursor.vy += (0 - p.cursor.y) * waveSettings.tension;
             p.cursor.vx *= waveSettings.friction;
             p.cursor.vy *= waveSettings.friction;
             p.cursor.x += p.cursor.vx * 2;
             p.cursor.y += p.cursor.vy * 2;
-
-            // Limit cursor effect
             p.cursor.x = Math.min(waveSettings.maxCursorMove, Math.max(-waveSettings.maxCursorMove, p.cursor.x));
             p.cursor.y = Math.min(waveSettings.maxCursorMove, Math.max(-waveSettings.maxCursorMove, p.cursor.y));
           });
         });
       }
-
+      
       function moved(p, withCursor = true) {
         const x = p.x + p.wave.x + (withCursor ? p.cursor.x : 0);
         const y = p.y + p.wave.y + (withCursor ? p.cursor.y : 0);
         return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10 };
       }
-
+      
       function drawLines() {
         const { width, height } = bounding;
         waveCtx.clearRect(0, 0, width, height);
-
-        // Decide wave line color based on dark mode or not
         waveSettings.lineColor = document.body.classList.contains("dark-mode")
           ? "rgba(255,255,255,0.3)"
           : "rgba(0,0,0,0.3)";
-
         waveCtx.beginPath();
         waveCtx.strokeStyle = waveSettings.lineColor;
-
         lines.forEach((points) => {
           let p1 = moved(points[0], false);
           waveCtx.moveTo(p1.x, p1.y);
-
           points.forEach((p, idx) => {
             const isLast = idx === points.length - 1;
             p1 = moved(p, !isLast);
@@ -334,11 +390,10 @@
         });
         waveCtx.stroke();
       }
-
+      
       function tick(t) {
         mouse.sx += (mouse.x - mouse.sx) * 0.1;
         mouse.sy += (mouse.y - mouse.sy) * 0.1;
-
         const dx = mouse.x - mouse.lx, dy = mouse.y - mouse.ly;
         const d = Math.hypot(dx, dy);
         mouse.v = d;
@@ -347,15 +402,12 @@
         mouse.lx = mouse.x;
         mouse.ly = mouse.y;
         mouse.a = Math.atan2(dy, dx);
-
-        // Move the small pointer dot
         wavePointer.style.transform = `translate(${mouse.x}px, ${mouse.y}px)`;
-
         movePoints(t);
         drawLines();
         requestAnimationFrame(tick);
       }
-
+      
       function onResize() {
         setSize();
         setLines();
@@ -379,17 +431,16 @@
           mouse.set = true;
         }
       }
-
+      
       setSize();
       setLines();
       requestAnimationFrame(tick);
-
       window.addEventListener("resize", onResize);
       window.addEventListener("mousemove", onMouseMove);
       window.addEventListener("touchmove", onTouchMove, { passive: false });
     }
-
-    // Initialize the wave effect
+    
+    // Initialize the Wave Effect
     initWaves();
   </script>
 </body>
