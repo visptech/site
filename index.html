@@ -1,239 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VISP TECH - Enter the Digital Fortress</title>
-
-  <!-- Tailwind Configuration: darkMode: 'class' -->
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            "color-1": "hsl(var(--color-1))",
-            "color-2": "hsl(var(--color-2))",
-            "color-3": "hsl(var(--color-3))",
-            "color-4": "hsl(var(--color-4))",
-            "color-5": "hsl(var(--color-5))",
-          },
-          animation: {
-            rainbow: "rainbow var(--speed, 2s) infinite linear",
-          },
-          keyframes: {
-            rainbow: {
-              "0%": { "background-position": "0%" },
-              "100%": { "background-position": "200%" },
-            },
-          },
-        },
-      },
-    }
-  </script>
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Global CSS Variables for the rainbow hues -->
+  <meta charset="utf-8" />
+  <title>VISPAIR | Free 30‑Minute Tech Consultation</title>
+  <meta name="description" content="Book a free 30‑minute consultation with VISPAIR to discuss your virtualization, IT, security, privacy, AI, or robotics challenge." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="logo.png" />
+  <!-- Drop this file (index.html) at the root of your repo (or docs/) then enable GitHub Pages. -->
   <style>
     :root {
-      --color-1: 0 100% 63%;
-      --color-2: 270 100% 63%;
-      --color-3: 210 100% 63%;
-      --color-4: 195 100% 63%;
-      --color-5: 90 100% 63%;
+      --brand: #007bff;
+      --brand-dark: #0056b3;
+      --text: #333;
+      --bg: #f9fafb;
     }
-    /* Ensure the flickering grid is behind everything */
-    #flickeringGrid {
-      position: absolute;
-      inset: 0;
-      z-index: -10;
+    * {
+      box-sizing: border-box;
     }
-    /* Smooth transitions for background/text color changes */
-    html, body {
-      transition: background-color 0.3s, color 0.3s;
+    body {
+      margin: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      text-align: center;
+      padding: 2rem 1rem;
+      max-width: 480px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    }
+    .logo {
+      width: 120px;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin: 0.25rem 0;
+      letter-spacing: 1px;
+    }
+    h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #555;
+      margin-bottom: 1.25rem;
+    }
+    .acronym {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 2rem;
+      text-align: left;
+    }
+    .acronym li {
+      margin: 0.35rem 0;
+    }
+    .acronym strong {
+      width: 22px;
+      display: inline-block;
+    }
+    .button {
+      display: inline-block;
+      background: var(--brand);
+      color: #fff;
+      padding: 0.9rem 1.8rem;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .button:hover {
+      background: var(--brand-dark);
+    }
+    .contact {
+      margin-top: 1.75rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .contact a {
+      color: var(--brand);
+    }
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.75rem;
+      }
+      h2 {
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
-
-<!-- Default to light mode, toggled to dark by JS adding class="dark" to <html> -->
-<body class="bg-neutral-100 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 relative min-h-screen">
-
-  <!-- Theme Toggle Button (top-right) -->
-  <button id="themeToggle" class="fixed top-4 right-4 z-50 focus:outline-none">
-    <!-- White Sun Icon (shown in light mode) -->
-    <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-8 h-8 text-white">
-      <path d="M12 4.354a1 1 0 011 1V7a1 1 0 11-2 0V5.354a1 1 0 011-1zm5.657 2.343a1 1 0 011.414 1.414l-1.242 1.242a1 1 0 01-1.414-1.414l1.242-1.242zM12 16a4 4 0 110-8 4 4 0 010 8zm6.646 2.354a1 1 0 10-1.414 1.414l1.242 1.242a1 1 0 001.414-1.414l-1.242-1.242zM4.354 12a1 1 0 011-1H7a1 1 0 110 2H5.354a1 1 0 01-1-1zm2.343-5.657a1 1 0 011.414 0l1.242 1.242a1 1 0 11-1.414 1.414L6.697 7.757a1 1 0 010-1.414zM4.354 16a1 1 0 000 2H7a1 1 0 100-2H4.354zm2.343 3.657a1 1 0 001.414-1.414l-1.242-1.242a1 1 0 10-1.414 1.414l1.242 1.242zM16 12a1 1 0 011-1h1.646a1 1 0 110 2H17a1 1 0 01-1-1z"/>
-    </svg>
-    <!-- Moon Icon (shown in dark mode) -->
-    <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-8 h-8 text-white hidden">
-      <path d="M21.752 15.002A9 9 0 0112 3a9.003 9.003 0 00-9 9c0 4.97 4.03 9 9 9a9.003 9.003 0 009.752-6.998z"/>
-    </svg>
-  </button>
-
-  <!-- Flickering Grid Background -->
-  <div id="flickeringGrid">
-    <canvas id="flickeringCanvas" class="w-full h-full"></canvas>
-  </div>
-
-  <!-- Main Content Container -->
-  <div class="relative z-10 max-w-3xl mx-auto mt-16 p-8 rounded-xl shadow-lg backdrop-blur-lg
-              bg-white/90 text-black
-              dark:bg-[rgba(0,0,0,0.6)] dark:text-white
-              text-center">
-
-    <!-- Headings -->
-    <h1 class="text-4xl md:text-6xl font-bold uppercase tracking-widest mb-2">VISP TECH</h1>
-    <h2 class="text-xl md:text-2xl mb-4">Enter the Digital Fortress</h2>
-    <p class="mb-6">Your digital world, fortified.</p>
-
-    <!-- Rainbow Button (CTA) -->
+<body>
+  <main class="container">
+    <img src="logo.png" alt="VISPAIR logo" class="logo" />
+    <h1>VISPAIR</h1>
+    <h2>Free 30‑Minute Consultation</h2>
+    <ul class="acronym">
+      <li><strong>V</strong>irtualization</li>
+      <li><strong>I</strong>nformation Technology</li>
+      <li><strong>S</strong>ecurity</li>
+      <li><strong>P</strong>rivacy</li>
+      <li><strong>A</strong>rtificial</li>
+      <li><strong>I</strong>ntelligence</li>
+      <li><strong>R</strong>obotics</li>
+    </ul>
     <a
-      href="mailto:visptech01@gmail.com"
-      class="group relative inline-flex h-11 animate-rainbow cursor-pointer items-center justify-center rounded-xl border-0 bg-[length:200%] px-8 py-2 font-medium text-white transition-colors [background-clip:padding-box,border-box,border-box] [background-origin:border-box] [border:calc(0.08*1rem)_solid_transparent] focus:outline-none focus:ring-1 focus:ring-ring disabled:pointer-events-none disabled:opacity-50 before:absolute before:bottom-[-20%] before:left-1/2 before:z-0 before:h-1/5 before:w-3/5 before:-translate-x-1/2 before:animate-rainbow before:bg-[linear-gradient(90deg,hsla(var(--color-1),1),hsla(var(--color-5),1),hsla(var(--color-3),1),hsla(var(--color-4),1),hsla(var(--color-2),1))] before:bg-[length:200%] before:[filter:blur(calc(0.8*1rem))] bg-[linear-gradient(#121213,#121213),linear-gradient(#121213_50%,rgba(18,18,19,0.6)_80%,rgba(18,18,19,0)),linear-gradient(90deg,hsla(var(--color-1),1),hsla(var(--color-5),1),hsla(var(--color-3),1),hsla(var(--color-4),1),hsla(var(--color-2),1))] dark:bg-[linear-gradient(#fff,#fff),linear-gradient(#fff_50%,rgba(255,255,255,0.6)_80%,rgba(0,0,0,0)),linear-gradient(90deg,hsla(var(--color-1),1),hsla(var(--color-5),1),hsla(var(--color-3),1),hsla(var(--color-4),1),hsla(var(--color-2),1))]"
+      href="https://calendar.app.google/fQCufju4WboSdQn67"
+      class="button"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Schedule your free 30‑minute consultation via Google Calendar"
+      >Schedule Free Consultation</a
     >
-      Secure Your Future Now
-    </a>
-
-    <!-- Service Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-      <div class="p-4 rounded-lg bg-black/10 dark:bg-white/10 font-semibold hover:-translate-y-1 transition-transform">
-        Virtualization – Optimize and streamline your workspace
-      </div>
-      <div class="p-4 rounded-lg bg-black/10 dark:bg-white/10 font-semibold hover:-translate-y-1 transition-transform">
-        IT Support – Tailored assistance for hardware &amp; software
-      </div>
-      <div class="p-4 rounded-lg bg-black/10 dark:bg-white/10 font-semibold hover:-translate-y-1 transition-transform">
-        Privacy Protection – Secure your personal &amp; online data
-      </div>
-      <div class="p-4 rounded-lg bg-black/10 dark:bg-white/10 font-semibold hover:-translate-y-1 transition-transform">
-        Cybersecurity – Advanced protection against digital threats
-      </div>
-    </div>
-
-    <!-- Contact Info -->
-    <p class="mt-6">
-      Need assistance? Send a secure transmission to
-      <a href="mailto:visptech01@gmail.com" class="font-bold text-blue-600 dark:text-[#0ef] hover:underline">
-        visptech01@gmail.com
-      </a>
+    <p class="contact">
+      Can’t book? Email
+      <a href="mailto:support@vispair.io">support@vispair.io</a>
     </p>
-  </div>
-
-  <!-- Scripts: Theme Toggle & Flickering Grid -->
-  <script>
-    /*********************************************************
-     * THEME TOGGLE LOGIC
-     *********************************************************/
-    const themeToggle = document.getElementById("themeToggle");
-    const sunIcon = document.getElementById("sunIcon");
-    const moonIcon = document.getElementById("moonIcon");
-
-    themeToggle.addEventListener("click", () => {
-      // Toggle .dark on <html>
-      document.documentElement.classList.toggle("dark");
-
-      // Switch icons
-      if (document.documentElement.classList.contains("dark")) {
-        sunIcon.classList.add("hidden");
-        moonIcon.classList.remove("hidden");
-      } else {
-        moonIcon.classList.add("hidden");
-        sunIcon.classList.remove("hidden");
-      }
-    });
-
-    /*********************************************************
-     * FLICKERING GRID BACKGROUND (Plain JS)
-     *********************************************************/
-    (function initFlickeringGrid() {
-      const container = document.getElementById("flickeringGrid");
-      const canvas = document.getElementById("flickeringCanvas");
-      const ctx = canvas.getContext("2d");
-
-      // Settings
-      const squareSize = 4;
-      const gridGap = 6;
-      const flickerChance = 0.1;
-      const maxOpacity = 0.5;
-      const baseColor = toRGBA("#6B7280"); // Gray color
-
-      let gridParams;
-      let lastTime = 0;
-
-      function toRGBA(colorStr) {
-        const tmpCanvas = document.createElement("canvas");
-        tmpCanvas.width = tmpCanvas.height = 1;
-        const tmpCtx = tmpCanvas.getContext("2d");
-        tmpCtx.fillStyle = colorStr;
-        tmpCtx.fillRect(0, 0, 1, 1);
-        const [r, g, b] = tmpCtx.getImageData(0, 0, 1, 1).data;
-        return `rgba(${r}, ${g}, ${b},`;
-      }
-
-      // Set up canvas & squares
-      function setupCanvas() {
-        const width = container.clientWidth;
-        const height = container.clientHeight;
-        const dpr = window.devicePixelRatio || 1;
-        canvas.width = width * dpr;
-        canvas.height = height * dpr;
-        canvas.style.width = width + "px";
-        canvas.style.height = height + "px";
-
-        const cols = Math.floor(width / (squareSize + gridGap));
-        const rows = Math.floor(height / (squareSize + gridGap));
-        const squares = new Float32Array(cols * rows);
-
-        for (let i = 0; i < squares.length; i++) {
-          squares[i] = Math.random() * maxOpacity;
-        }
-        return { width, height, dpr, cols, rows, squares };
-      }
-
-      function updateSquares(squares, deltaTime) {
-        for (let i = 0; i < squares.length; i++) {
-          if (Math.random() < flickerChance * deltaTime) {
-            squares[i] = Math.random() * maxOpacity;
-          }
-        }
-      }
-
-      function drawGrid(params) {
-        const { width, height, dpr, cols, rows, squares } = params;
-        ctx.clearRect(0, 0, width * dpr, height * dpr);
-        for (let i = 0; i < cols; i++) {
-          for (let j = 0; j < rows; j++) {
-            const opacity = squares[i * rows + j];
-            ctx.fillStyle = baseColor + opacity + ")";
-            ctx.fillRect(
-              i * (squareSize + gridGap) * dpr,
-              j * (squareSize + gridGap) * dpr,
-              squareSize * dpr,
-              squareSize * dpr
-            );
-          }
-        }
-      }
-
-      function animate(time) {
-        const deltaTime = (time - lastTime) / 1000;
-        lastTime = time;
-        updateSquares(gridParams.squares, deltaTime);
-        drawGrid(gridParams);
-        requestAnimationFrame(animate);
-      }
-
-      function onResize() {
-        gridParams = setupCanvas();
-      }
-
-      // Initialize
-      gridParams = setupCanvas();
-      requestAnimationFrame(animate);
-      window.addEventListener("resize", onResize);
-    })();
-  </script>
+  </main>
 </body>
 </html>
